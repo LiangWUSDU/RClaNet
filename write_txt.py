@@ -4,7 +4,7 @@ import os
 def ListFilesToTxt(dir, file, wildcard, recursion):
 	exts = wildcard.split(" ")
 	files = os.listdir(dir)
-	#files.sort(key=lambda x:int(x[:-48]))
+	#files.sort(key=lambda x:int(x[:-15]))
 	for name in files:
 		fullname = os.path.join(dir, name)
 		if (os.path.isdir(fullname) & recursion):
@@ -18,9 +18,9 @@ def ListFilesToTxt(dir, file, wildcard, recursion):
 
 
 def Test():
-	dir = "train_data/train_AD/moving_image/"
-	outfile = "train_data/train_AD/train.txt"
-	wildcard = ".nii.gz"
+	dir = "new_weights/MA/VGG/"
+	outfile = "new_weights/MA/VGG/weights.txt"
+	wildcard = ".hdf5"
 
 	file = open(outfile, "w")
 	ListFilesToTxt(dir, file, wildcard, 1)
