@@ -10,18 +10,20 @@ import os
 from functions.openexcel import open_excel_train1
 from functions.losses import *
 from functions.loss import focal_loss
+import tensorflow.compat.v1 as tf
+tf.disable_v2_behavior()
 os.environ["CUDA_DEVICE_ORDER"] = "PCI_BUS_ID"
 os.environ["CUDA_VISIBLE_DEVICES"] = "0"
 gpu_options = tf.GPUOptions(allow_growth=True)
 sess = tf.Session(config=tf.ConfigProto(gpu_options=gpu_options))
 sess.run(tf.global_variables_initializer())
 os.environ["TF_CPP_MIN_LOG_LEVEL"] = '2' # 只显示 Error
-from keras.callbacks import ModelCheckpoint,EarlyStopping
+from tensorflow.keras.callbacks import ModelCheckpoint,EarlyStopping
 from generators.gen_T1 import my_gen
 from networks.MultiHeadsModel import mutilheadattModel,MLP
 from networks.GoogleNet import Googlenet
 from functions.loss import focal_loss
-from keras.optimizers import Adam,SGD,rmsprop
+from tensorflow.keras.optimizers import Adam,SGD
 # CN vs. AD   CA
 # CN vs. MCI  CM
 # MCI vs. AD   MA
@@ -70,6 +72,7 @@ my_validGene = my_gen(test_ADNI_risk_file,test_txt,test_CDR,p_test_C,p_test_M,ba
 
 model =  Googlenet((160,192,160,1))
 #model.summary()
+model.load_weights('new_weights/CM/GoogleNet/weights.10-0.2007.hdf5',by_name=True)
 model.compile(optimizer=Adam(lr=0.00001), loss= ['categorical_crossentropy'],metrics=['accuracy'])
 model_checkpoint1 = ModelCheckpoint(weight_dir+'weights.{epoch:02d}-{loss:.4f}.hdf5', monitor='loss', verbose=1,
                                     save_best_only=True, save_weights_only=True, mode='auto', period=1)

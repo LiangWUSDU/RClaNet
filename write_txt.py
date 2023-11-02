@@ -18,8 +18,8 @@ def ListFilesToTxt(dir, file, wildcard, recursion):
 
 
 def Test():
-	dir = "new_weights/MA/VGG/"
-	outfile = "new_weights/MA/VGG/weights.txt"
+	dir = "new_weights/MA/MHCNN_kf10_10/"
+	outfile = "new_weights/MA/MHCNN_kf10_10/weights.txt"
 	wildcard = ".hdf5"
 
 	file = open(outfile, "w")

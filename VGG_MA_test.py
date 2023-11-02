@@ -5,6 +5,8 @@ Created on 7.13  10:41:52 2021
 """
 import tensorflow as tf
 import os
+import tensorflow.compat.v1 as tf
+tf.disable_v2_behavior()
 os.environ["CUDA_DEVICE_ORDER"] = "PCI_BUS_ID"
 os.environ["CUDA_VISIBLE_DEVICES"] = "0"
 gpu_options = tf.GPUOptions(allow_growth=True)
@@ -28,8 +30,9 @@ def classification_metric(true,predicts):
 	spe = specificity(true,predicts)
 	AUC = roc_auc_score(true,predicts)
 	MCC = matthews_corrcoef(true,predicts)
+	f1 = f1_score(true,predicts)
 	my_confusion_matrix = confusion_matrix(true,predicts)
-	metric = [[acc, sen, spe, AUC, MCC], ]
+	metric = [[acc, sen, spe, AUC, MCC,f1], ]
 	return metric, my_confusion_matrix
 def bn(image):
 	[x,y,z] = np.shape(image)

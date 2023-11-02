@@ -5,8 +5,10 @@ Created on 7.13  10:41:52 2021
 """
 import tensorflow as tf
 import os
+import tensorflow.compat.v1 as tf
+tf.disable_v2_behavior()
 os.environ["CUDA_DEVICE_ORDER"] = "PCI_BUS_ID"
-os.environ["CUDA_VISIBLE_DEVICES"] = "1"
+os.environ["CUDA_VISIBLE_DEVICES"] = "0"
 gpu_options = tf.GPUOptions(allow_growth=True)
 sess = tf.Session(config=tf.ConfigProto(gpu_options=gpu_options))
 sess.run(tf.global_variables_initializer())
@@ -23,13 +25,14 @@ from sklearn.metrics import matthews_corrcoef,accuracy_score,f1_score,precision_
 def classification_metric(true,predicts):
 	true = np.squeeze(true)
 	predicts = np.squeeze(predicts)
-	acc = accuracy(true,predicts)
-	sen = sensitivity(true,predicts)
-	spe = specificity(true,predicts)
-	AUC = roc_auc_score(true,predicts)
+	#acc = accuracy(true,predicts)
+	#sen = sensitivity(true,predicts)
+	#spe = specificity(true,predicts)
+	#AUC = roc_auc_score(true,predicts)
 	MCC = matthews_corrcoef(true,predicts)
+	f1 = f1_score(true,predicts)
 	my_confusion_matrix = confusion_matrix(true,predicts)
-	metric = [[acc, sen, spe, AUC, MCC], ]
+	metric = [[ MCC,f1], ]
 	return metric, my_confusion_matrix
 def bn(image):
 	[x,y,z] = np.shape(image)
