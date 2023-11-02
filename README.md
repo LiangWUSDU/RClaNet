@@ -18,9 +18,9 @@ First, you need to run train_proposal.py to train the joint registration and cla
 
 Then run test_proposal.py to get the global deformation field and disease risk probability map.
 
-For the classification of AD, we consider three classification tasks. The classifiers are CNN and MHCNN. 
+For the classification of AD, we consider three classification tasks. The classifiers are CNN and MHCNN. (train_CNN_CA.py, train_MHCNN_CA.py, et al.)
 
-Finally, the trained model is used to test the test set.
+Finally, the trained model is used to test the test set. (CNN_CA_test.py,MHCNN_CA_test.py, et al.)
 There are others parameters can be set, please see the code for details.
 # Ackonowleggment
 
