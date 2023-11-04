@@ -14,13 +14,16 @@ scipy~=1.9.3
 # How to exectue
 Download the code to your own computer:
 
-First, you need to run train_proposal.py to train the joint registration and classification model.
+First, you need to run train_propose.py to train the joint registration and classification model.
 
-Then run test_proposal.py to get the global deformation field and disease risk probability map.
+Then run test_propose.py to get the global deformation field and disease risk probability map.
 
 For the classification of AD, we consider three classification tasks. The classifiers are CNN and MHCNN. (train_CNN_CA.py, train_MHCNN_CA.py, et al.)
 
 Finally, the trained model is used to test the test set. (CNN_CA_test.py,MHCNN_CA_test.py, et al.)
+# Script that generates the H5 file is included
+Please find the code at the weights/.
+
 There are others parameters can be set, please see the code for details.
 # Ackonowleggment
 
