@@ -22,7 +22,7 @@ For the classification of AD, we consider three classification tasks. The classi
 
 Finally, the trained model is used to test the test set. (CNN_CA_test.py,MHCNN_CA_test.py, et al.)
 # Script that generates the H5 file is included
-Please find the code at the weights/.
+Please contact me if you need this file (wuliang@sdfmu.edu.cn).
 
 There are others parameters can be set, please see the code for details.
 # Ackonowleggment
@@ -31,4 +31,4 @@ Some codes in this repository are modified form Labreg and VoxelMorph.
 
 # Contact:
 
-If you have any problems or questions please contact(wl202305@126.com or hushunbo@lyu.edu.cn)
+If you have any problems or questions please contact(wuliang@sdfmu.edu.cn or hushunbo@lyu.edu.cn)
